@@ -1,79 +1,63 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="en-US"> 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Insert Data Ajax</title>
-	<link rel="stylesheet" href="style.css">
-	
+	<meta charset="UTF-8">
+	<title>Ajax</title>
+	<link rel="stylesheet" type="text/css" href="style.css" media="all" />
 </head>
 <body>
-	<?php
 
-		include dirname(__FILE__)."/functions.php";
-		$obj = new ajax();
-
-		if(isset($_POST['submit']) AND $_SERVER['REQUEST_METHOD'] == "POST" ){
-			$name  	= $_POST['name'];
-			$email 	= $_POST['email'];
-			$cell 	= $_POST['cell'];
-
-			if(empty( $name ) || empty( $email ) || empty( $cell )){
-				echo "<h2 style ='color: red;'> File Must Be Not Empty</h2>";
-			}else{
-				$data = $obj -> dataInsert($name,$email,$cell);
-				echo $data;
-			}
-
-		}
-	?>
+	
+	<h1 class="resss"></h1>
+	
 
 	<div class="data">
-		<h2>Insert Data</h2>
-		<hr>
-		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+		<h2>Data Insert</h2>
+		<hr />
+		<form>
 			<table>
-				<tr>
-					<td>Name </td>
-					<td><input type="text" name="name"></td>
+				<tr> 
+					<td>Name</td>
+					<td><input name="name" type="text" /></td>
 				</tr>
-				<tr>
-					<td>Email </td>
-					<td><input type="text" name="email"></td>
+				<tr> 
+					<td>Email</td>
+					<td><input name="email" type="text" /></td>
+			</tr>
+				<tr> 
+					<td>Cell</td>
+					<td><input name="cell" type="text" /></td>
 				</tr>
-				<tr>
-					<td>Cell </td>
-					<td><input type="text" name="cell"></td>
-				</tr>
-				<tr>
+				<tr> 
 					<td></td>
-					<td><input type="submit" name="submit" value="Insert Data"></td>
+					<td><input name="submit" type="submit" value="Insert Data" /></td>
 				</tr>
 			</table>
 		</form>
 	</div>
-	<div class="show-data">
+	
+	
+	 
+	<div class="data-show"> 
 		<table>
-			<tr>
-				<th>Id</th>
-				<th>Name</th>
-				<th>Email</th>
-				<th>Cell</th>
-				<th>Action</th>
+			<tr> 
+				<td>Id</td>
+				<td>Name</td>
+				<td>Email</td>
+				<td>cell</td>
+				<td>Action</td>
 			</tr>
-			<?Php
-				$show = $obj -> datashow();
-				while($dd = $show-> fetch_assoc()):
-			?>
-			<tr>
-				<td><?php echo $dd['id'];?></td>
-				<td><?php echo $dd['name'];?></td>
-				<td><?php echo $dd['email'];?></td>
-				<td><?php echo $dd['cell'];?></td>
-				<td><a href="#">Edit</a>/<a href="#">Dlete</a></td>
-			</tr>
-			<?php endwhile; ?>
+			
+			
+			
+		</table>
+		<table id="datagola">
+			
 		</table>
 	</div>
+	
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	
 </body>
 </html>
